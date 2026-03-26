@@ -7,6 +7,7 @@ import JobsSection from "@/components/portfolio/sections/JobsSection";
 import ProjectsSection from "@/components/portfolio/sections/ProjectsSection";
 import EducationSection from "@/components/portfolio/sections/EducationSection";
 import CertificatesSection from "@/components/portfolio/sections/CertificatesSection";
+import ParticleNetwork from "@/components/portfolio/ParticleNetwork";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { Menu, X } from "lucide-react";
 
@@ -26,9 +27,10 @@ const Index = () => {
   if (isClosed) {
     return (
       <div className="macos-gradient-bg min-h-screen flex items-center justify-center">
+        <ParticleNetwork />
         <button
           onClick={() => setIsClosed(false)}
-          className="px-6 py-3 rounded-2xl glass-window text-white/80 text-sm font-medium hover:text-white transition-colors active:scale-[0.97]"
+          className="relative z-10 px-6 py-3 rounded-2xl glass-window text-white/80 text-sm font-medium hover:text-white transition-colors active:scale-[0.97]"
         >
           Reopen Portfolio
         </button>
@@ -38,8 +40,9 @@ const Index = () => {
 
   return (
     <div className="macos-gradient-bg min-h-screen flex items-center justify-center p-2 sm:p-4">
+      <ParticleNetwork />
       <div
-        className={`glass-window rounded-2xl flex flex-col transition-all duration-500 ease-out ${
+        className={`glass-window rounded-2xl flex flex-col transition-all duration-500 ease-out relative z-10 ${
           isMaximized
             ? "w-full h-screen rounded-none"
             : "w-full max-w-5xl h-[95vh] sm:h-[85vh]"
@@ -77,7 +80,14 @@ const Index = () => {
         )}
 
         {/* Body */}
-        <div className="flex flex-1 min-h-0 px-4 sm:px-5 pb-4 sm:pb-5">
+        <div className="flex flex-1 min-h-0 px-4 sm:px-5 pb-4 sm:pb-5 relative">
+          <ParticleNetwork
+            mode="contained"
+            count={40}
+            lineColor="200, 200, 220"
+            dotColor="200, 200, 220"
+            className="rounded-b-2xl opacity-40"
+          />
           {/* Sidebar — hidden on small screens */}
           <div className="hidden sm:block">
             <Sidebar activeSection={activeSection} onSectionChange={handleSectionChange} />
