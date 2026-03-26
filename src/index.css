@@ -75,36 +75,40 @@
   }
 }
 
-/* Animated gradient background — ocean wave flow */
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  10%  { background-position: 20% 30%; }
-  20%  { background-position: 40% 60%; }
-  30%  { background-position: 60% 40%; }
-  40%  { background-position: 80% 70%; }
-  50%  { background-position: 100% 50%; }
-  60%  { background-position: 80% 30%; }
-  70%  { background-position: 60% 60%; }
-  80%  { background-position: 40% 40%; }
-  90%  { background-position: 20% 70%; }
-  100% { background-position: 0% 50%; }
+/* Animated gradient background — big sea waves */
+@keyframes waveX {
+  0%   { background-position: 0% 30%; }
+  20%  { background-position: 40% 70%; }
+  40%  { background-position: 100% 20%; }
+  60%  { background-position: 60% 80%; }
+  80%  { background-position: 20% 50%; }
+  100% { background-position: 0% 30%; }
+}
+
+@keyframes waveHue {
+  0%   { filter: hue-rotate(0deg) brightness(1); }
+  25%  { filter: hue-rotate(40deg) brightness(1.1); }
+  50%  { filter: hue-rotate(-30deg) brightness(0.95); }
+  75%  { filter: hue-rotate(60deg) brightness(1.1); }
+  100% { filter: hue-rotate(0deg) brightness(1); }
 }
 
 .macos-gradient-bg {
   background: linear-gradient(
-    -45deg,
-    hsl(210 70% 22%),
-    hsl(240 60% 25%),
-    hsl(270 55% 30%),
-    hsl(300 50% 35%),
-    hsl(330 60% 38%),
-    hsl(290 55% 32%),
-    hsl(250 60% 28%),
-    hsl(220 65% 24%),
-    hsl(200 70% 26%)
+    160deg,
+    hsl(200 80% 42%),
+    hsl(260 75% 52%),
+    hsl(320 80% 58%),
+    hsl(15 85% 58%),
+    hsl(190 80% 45%),
+    hsl(280 70% 50%),
+    hsl(340 75% 55%),
+    hsl(220 85% 50%),
+    hsl(50 75% 52%),
+    hsl(170 65% 42%)
   );
-  background-size: 800% 800%;
-  animation: gradientShift 25s ease-in-out infinite;
+  background-size: 600% 600%;
+  animation: waveX 12s ease-in-out infinite, waveHue 18s ease-in-out infinite;
 }
 
 /* Glassmorphism window */
