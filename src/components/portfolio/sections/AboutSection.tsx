@@ -1,17 +1,10 @@
 import { personalInfo } from "@/data/portfolio";
 import { Download } from "lucide-react";
 import aboutPhoto from "@/assets/about-photo.jpg";
-import ParticleNetwork from "@/components/portfolio/ParticleNetwork";
 
 const AboutSection = () => {
   return (
     <div className="about-gradient rounded-xl p-8 flex items-center gap-8 relative overflow-hidden">
-      <ParticleNetwork
-        mode="contained"
-        count={30}
-        lineColor="255, 255, 255"
-        dotColor="255, 255, 255"
-      />
       <div className="flex-1 min-w-0 relative z-[2]">
         <h1 className="text-3xl font-bold text-white leading-tight mb-3" style={{ lineHeight: "1.15" }}>
           {personalInfo.name}

@@ -8,6 +8,8 @@ import ProjectsSection from "@/components/portfolio/sections/ProjectsSection";
 import EducationSection from "@/components/portfolio/sections/EducationSection";
 import CertificatesSection from "@/components/portfolio/sections/CertificatesSection";
 import ParticleNetwork from "@/components/portfolio/ParticleNetwork";
+import WaveBackground from "@/components/portfolio/WaveBackground";
+import HelloScreen from "@/components/portfolio/HelloScreen";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { Menu, X } from "lucide-react";
 
@@ -16,6 +18,7 @@ const Index = () => {
   const [isMaximized, setIsMaximized] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showIntro, setShowIntro] = useState(true);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const handleSectionChange = (section: string) => {
@@ -24,9 +27,14 @@ const Index = () => {
     contentRef.current?.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  if (showIntro) {
+    return <HelloScreen onComplete={() => setShowIntro(false)} />;
+  }
+
   if (isClosed) {
     return (
-      <div className="macos-gradient-bg min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center relative">
+        <WaveBackground />
         <ParticleNetwork />
         <button
           onClick={() => setIsClosed(false)}
@@ -39,7 +47,8 @@ const Index = () => {
   }
 
   return (
-    <div className="macos-gradient-bg min-h-screen flex items-center justify-center p-2 sm:p-4">
+    <div className="min-h-screen flex items-center justify-center p-2 sm:p-4 relative">
+      <WaveBackground />
       <ParticleNetwork />
       <div
         className={`glass-window rounded-2xl flex flex-col transition-all duration-500 ease-out relative z-10 ${
@@ -57,7 +66,6 @@ const Index = () => {
               onMinimize={() => {}}
               onMaximize={() => setIsMaximized(!isMaximized)}
             />
-            {/* Hamburger — visible only on small screens */}
             <button
               className="sm:hidden ml-2 p-1.5 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -66,13 +74,11 @@ const Index = () => {
               {isMobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
-          {/* Profile photo */}
           <div className="w-9 h-9 rounded-full bg-white/15 border border-white/20 flex items-center justify-center overflow-hidden">
             <img src={profilePhoto} alt="Diana Pangilinan" className="w-full h-full object-cover" />
           </div>
         </div>
 
-        {/* Mobile slide-down menu */}
         {isMobileMenuOpen && (
           <div className="sm:hidden shrink-0 px-4 pb-3 border-b border-white/10">
             <Sidebar activeSection={activeSection} onSectionChange={handleSectionChange} mobile />
@@ -88,12 +94,10 @@ const Index = () => {
             dotColor="200, 200, 220"
             className="rounded-b-2xl opacity-40"
           />
-          {/* Sidebar — hidden on small screens */}
           <div className="hidden sm:block">
             <Sidebar activeSection={activeSection} onSectionChange={handleSectionChange} />
           </div>
 
-          {/* Content area */}
           <main
             ref={contentRef}
             className="flex-1 overflow-y-auto custom-scrollbar sm:pl-6 space-y-8 min-w-0"

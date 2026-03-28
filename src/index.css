@@ -75,42 +75,6 @@
   }
 }
 
-/* Animated gradient background — big sea waves */
-@keyframes waveX {
-  0%   { background-position: 0% 30%; }
-  20%  { background-position: 40% 70%; }
-  40%  { background-position: 100% 20%; }
-  60%  { background-position: 60% 80%; }
-  80%  { background-position: 20% 50%; }
-  100% { background-position: 0% 30%; }
-}
-
-@keyframes waveHue {
-  0%   { filter: hue-rotate(0deg) brightness(1); }
-  25%  { filter: hue-rotate(40deg) brightness(1.1); }
-  50%  { filter: hue-rotate(-30deg) brightness(0.95); }
-  75%  { filter: hue-rotate(60deg) brightness(1.1); }
-  100% { filter: hue-rotate(0deg) brightness(1); }
-}
-
-.macos-gradient-bg {
-  background: linear-gradient(
-    160deg,
-    hsl(200 80% 42%),
-    hsl(260 75% 52%),
-    hsl(320 80% 58%),
-    hsl(15 85% 58%),
-    hsl(190 80% 45%),
-    hsl(280 70% 50%),
-    hsl(340 75% 55%),
-    hsl(220 85% 50%),
-    hsl(50 75% 52%),
-    hsl(170 65% 42%)
-  );
-  background-size: 600% 600%;
-  animation: waveX 12s ease-in-out infinite, waveHue 18s ease-in-out infinite;
-}
-
 /* Glassmorphism window */
 .glass-window {
   background: hsla(230 30% 12% / 0.65);
@@ -190,4 +154,37 @@
 }
 .nav-item:active {
   transform: scale(0.97);
+}
+
+/* Borel font for hello screen */
+@font-face {
+  font-family: 'Borel';
+  src: url('/fonts/Borel-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Hello screen animations */
+@keyframes helloGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes floatBlob1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(5vw, 3vh) scale(1.1); }
+  66% { transform: translate(-3vw, -5vh) scale(0.95); }
+}
+
+@keyframes floatBlob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40% { transform: translate(-4vw, -3vh) scale(1.08); }
+  70% { transform: translate(3vw, 4vh) scale(0.92); }
 }
