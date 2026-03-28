@@ -51,7 +51,7 @@ const HelloScreen = ({ onComplete }: HelloScreenProps) => {
         }, 60);
         return () => clearTimeout(timer);
       } else {
-        setCurrentGreeting((prev) => prev + 1);
+        setCurrentGreeting((prev: number) => prev + 1);
         setPhase("typing");
       }
     }
@@ -62,29 +62,46 @@ const HelloScreen = ({ onComplete }: HelloScreenProps) => {
       className={`fixed inset-0 z-[100] flex items-center justify-center transition-opacity duration-700 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
-      style={{
-        background: "linear-gradient(135deg, hsl(280 60% 85%), hsl(220 70% 88%), hsl(340 50% 88%), hsl(200 65% 90%), hsl(260 55% 87%))",
-        backgroundSize: "400% 400%",
-        animation: "helloGradient 8s ease-in-out infinite",
-      }}
+      style={{ background: "hsl(310, 30%, 97%)" }}
     >
-      {/* Soft ambient blobs */}
+      {/* Blush pink blob — top left */}
       <div
-        className="absolute w-[60vw] h-[60vw] rounded-full opacity-30 blur-[120px]"
+        className="absolute w-[65vw] h-[65vw] rounded-full blur-[130px]"
         style={{
-          background: "radial-gradient(circle, hsl(280 80% 75%), transparent 70%)",
-          top: "10%",
-          left: "-10%",
+          background: "radial-gradient(circle, hsla(330, 65%, 80%, 0.75), transparent 70%)",
+          top: "-10%",
+          left: "-15%",
           animation: "floatBlob1 10s ease-in-out infinite",
         }}
       />
+      {/* Lavender blob — right */}
       <div
-        className="absolute w-[50vw] h-[50vw] rounded-full opacity-25 blur-[100px]"
+        className="absolute w-[55vw] h-[55vw] rounded-full blur-[110px]"
         style={{
-          background: "radial-gradient(circle, hsl(200 80% 78%), transparent 70%)",
-          bottom: "5%",
-          right: "-5%",
+          background: "radial-gradient(circle, hsla(275, 55%, 82%, 0.7), transparent 70%)",
+          top: "20%",
+          right: "-15%",
           animation: "floatBlob2 12s ease-in-out infinite",
+        }}
+      />
+      {/* Sky blue blob — bottom left */}
+      <div
+        className="absolute w-[50vw] h-[50vw] rounded-full blur-[100px]"
+        style={{
+          background: "radial-gradient(circle, hsla(200, 60%, 84%, 0.65), transparent 70%)",
+          bottom: "-5%",
+          left: "10%",
+          animation: "floatBlob1 14s ease-in-out infinite reverse",
+        }}
+      />
+      {/* Peach blob — bottom right */}
+      <div
+        className="absolute w-[45vw] h-[45vw] rounded-full blur-[90px]"
+        style={{
+          background: "radial-gradient(circle, hsla(22, 70%, 82%, 0.6), transparent 70%)",
+          bottom: "0%",
+          right: "5%",
+          animation: "floatBlob2 11s ease-in-out infinite reverse",
         }}
       />
 
@@ -96,10 +113,10 @@ const HelloScreen = ({ onComplete }: HelloScreenProps) => {
           fontWeight: 400,
           letterSpacing: "-0.01em",
           color: "transparent",
-          background: "linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 35%, rgba(255,255,255,0.85) 65%, rgba(255,255,255,0.5) 100%)",
+          background: "linear-gradient(160deg, hsla(330, 40%, 55%, 0.95) 0%, hsla(275, 40%, 60%, 0.8) 40%, hsla(200, 45%, 55%, 0.9) 75%, hsla(22, 50%, 60%, 0.75) 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
-          filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.18)) drop-shadow(0 2px 8px rgba(0,0,0,0.12))",
+          filter: "drop-shadow(0 1px 2px rgba(180,140,160,0.25)) drop-shadow(0 2px 10px rgba(180,140,160,0.15))",
           minHeight: "1.4em",
           lineHeight: "1.4",
           padding: "0.4em 0.3em",
@@ -112,7 +129,7 @@ const HelloScreen = ({ onComplete }: HelloScreenProps) => {
           className="inline-block w-[3px] ml-1 align-baseline"
           style={{
             height: "0.75em",
-            background: "rgba(255,255,255,0.85)",
+            background: "hsla(330, 50%, 65%, 0.8)",
             animation: "cursorBlink 1s step-end infinite",
             borderRadius: "2px",
           }}
