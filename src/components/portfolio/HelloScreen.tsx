@@ -96,11 +96,14 @@ const HelloScreen = ({ onComplete }: HelloScreenProps) => {
           fontWeight: 400,
           letterSpacing: "-0.01em",
           color: "transparent",
-          background: "linear-gradient(180deg, hsla(210 30% 85% / 0.95) 0%, hsla(210 20% 70% / 0.5) 40%, hsla(210 30% 85% / 0.9) 100%)",
+          background: "linear-gradient(160deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 35%, rgba(255,255,255,0.85) 65%, rgba(255,255,255,0.5) 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
-          filter: "drop-shadow(0 1px 2px hsla(210 40% 60% / 0.3)) drop-shadow(0 4px 20px hsla(210 50% 80% / 0.25))",
-          minHeight: "1.2em",
+          filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.18)) drop-shadow(0 2px 8px rgba(0,0,0,0.12))",
+          minHeight: "1.4em",
+          lineHeight: "1.4",
+          padding: "0.4em 0.3em",
+          overflow: "visible",
           textShadow: "none",
         }}
       >
@@ -109,7 +112,7 @@ const HelloScreen = ({ onComplete }: HelloScreenProps) => {
           className="inline-block w-[3px] ml-1 align-baseline"
           style={{
             height: "0.75em",
-            background: "hsla(0 0% 100% / 0.7)",
+            background: "rgba(255,255,255,0.85)",
             animation: "cursorBlink 1s step-end infinite",
             borderRadius: "2px",
           }}
